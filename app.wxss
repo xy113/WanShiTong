@@ -1,0 +1,89 @@
+/**app.wxss**/
+view::after{
+  content: " ";
+  display: block;
+  overflow: hidden;
+  clear: both;
+}
+
+.container {
+  height: 100%;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: #f2f2f2;
+} 
+
+.catlog-container{
+  display: flex;
+  width: 100%;
+  flex-flow: row wrap;
+  padding: 10px 0;
+  background-color: #fff;
+}
+.catlog-item{
+  flex: 1;
+  width: 25%;
+  min-width: 25%;
+  max-width: 25%;
+  display: block;
+  padding: 5px 0;
+}
+.catlog-icon{
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+}
+
+.catlog-name{
+  text-align: center;
+  font-size: 13px;
+  display: block;
+  padding: 5px;
+  font-weight: 400;
+}
+
+.swiper-wrap{
+  display: block;
+  position: relative;
+  margin: 15px 0;
+  padding-top: 50%;
+}
+
+.swiper{
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.swiper-item{
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-image{
+  width: 100%;
+  height: 100%;
+}
+
+.pub-box{
+  position: fixed;
+  right: 10px;
+  bottom: 60rpx;
+  z-index: 1000;
+  display: block;
+}
+
+.pub-icon{
+  width: 60px;
+  height: 60px;
+}
+
+.hidden{
+  display: none;
+}

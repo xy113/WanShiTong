@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/catlog/catlog",
+    "pages/publish/catlog",
+    "pages/publish/publish",
+    "pages/info/item"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#f2f2f2",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "触角同城便民服务站",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "同城",
+        "selectedColor": "#1296db",
+        "iconPath": "images/icon/home.png",
+        "selectedIconPath": "images/icon/home-fill.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "门店",
+        "selectedColor": "#1296db",
+        "iconPath": "images/icon/shop.png",
+        "selectedIconPath": "images/icon/shop-fill.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的",
+        "selectedColor": "#1296db",
+        "iconPath": "images/icon/my.png",
+        "selectedIconPath": "images/icon/my-fill.png"
+      }
+    ]
+  }
+}

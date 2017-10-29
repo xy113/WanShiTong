@@ -1,0 +1,8 @@
+{
+  "backgroundTextStyle": "light",
+  "backgroundColor": "#f2f2f2",
+  "navigationBarBackgroundColor": "#fff",
+  "navigationBarTitleText": "请选择分类",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": true
+}
