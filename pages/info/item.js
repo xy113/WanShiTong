@@ -1,4 +1,39 @@
 // pages/info/item.js
+var app = getApp();
+var infoId = 0;
+var self = null;
+var isRefreshing = false;
+var isLoading = false;
+//页面请求集合
+var _info = {};
+var handlers = {
+  //从服务加载信息
+  loadData:function(){
+    wx.showLoading({
+      title: '',
+    });
+    wx.request({
+      url: app.getApi() + 'c=info&a=get&id=' + infoId,
+      success: function (res) {
+        setTimeout(function(){
+          wx.hideLoading();
+          if (isRefreshing) {
+            isRefreshing = false;
+            wx.stopPullDownRefresh();
+          }
+
+          if (isLoading) {
+            isLoading = false;
+          }
+          _info = res.data.data;
+          self.setData({
+            info: _info
+          });
+        }, 500);
+      }
+    });
+  }
+};
 Page({
 
   /**
@@ -12,7 +47,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    self = this;
+    infoId = options.id;
+    handlers.loadData();
   },
 
   /**
@@ -47,7 +84,10 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    if (!isRefreshing) {
+      isRefreshing = true;
+      handlers.loadData();
+    }
   },
 
   /**
@@ -62,5 +102,5 @@ Page({
    */
   onShareAppMessage: function () {
   
-  }
+  },
 })

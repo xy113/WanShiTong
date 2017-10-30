@@ -1,7 +1,7 @@
 // pages/publish/publish.js
 var app = getApp();
-var imagePickedKey = "imagePickedKey";
-var imageSavedKey = "imageSavedKey";
+var imageIdList = [];
+var imagePathList = [];
 Page({
 
   /**
@@ -29,10 +29,7 @@ Page({
    */
   onReady: function () {
     try {
-      var imageList = wx.getStorageSync(imagePickedKey);
-      this.setData({
-        imageList: imageList
-      });
+      this.setImages();
     } catch (e) {
       //什么也不做
     }
@@ -49,7 +46,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    //wx.setStorageSync('infoImageList', []);
+    
   },
 
   /**
@@ -81,6 +78,25 @@ Page({
   },
 
   /**
+   * 刷新图片信息
+   */
+  setImages:function(){
+    this.setData({
+      imageList: imagePathList
+    });
+
+    if (imageIdList.length >= 9) {
+      this.setData({
+        showAddImgBtn: false
+      });
+    }else {
+      this.setData({
+        showAddImgBtn: true
+      });
+    }
+  },
+
+  /**
    * 表单提交
    */
   formSubmit:function(e){
@@ -108,17 +124,17 @@ Page({
       });
       return false;
     }
-    data.images = wx.getStorageSync(imageSavedKey);
+    data.images = imageIdList;
     wx.request({
-      url: app.Config.Api+"c=info&a=add",
+      url: app.getApi()+"c=info&a=add",
       type:'POST',
       data: data,
       success:function(response){
           var res = response.data;
           console.log(res);
           if(res.errcode == 0){
-            wx.removeStorageSync(imagePickedKey);
-            wx.removeStorageSync(imageSavedKey);
+            imageIdList = [];
+            imagePathList = [];
             wx.redirectTo({
               url: '/pages/info/item?id='+res.data.id,
             });
@@ -132,11 +148,13 @@ Page({
     })
   },
 
+  /**
+   * 选择地址
+   */
   getLocation:function(){
       var self = this;
       wx.chooseLocation({
         success: function(res) {
-          //console.log(JSON.stringify(res));
           self.setData({
               address:res.address,
               lng:res.longitude,
@@ -156,43 +174,23 @@ Page({
         success: function(res) {
             var filePath = res.tempFilePaths[0];
             wx.showLoading({
-              title: '正在处理图片...',
+              title: '正在处理..',
             });
             wx.uploadFile({
-              url: app.Config.Api+'c=material&a=upload&type=image',
+              url: app.getApi()+'c=material&a=upload&type=image',
               filePath: filePath,
               name: 'filedata',
               success:function(response){
                 wx.hideLoading();
                 var data = JSON.parse(response.data);
                 var imgData = data.data;
-                console.log(JSON.stringify(imgData));
-                var infoImages = [];
-                var imageList = [];
-                try {
-                  infoImages = wx.getStorageSync(imageSavedKey);
-                }catch (e) {}
+                //console.log(JSON.stringify(imgData));
+
                 //最多9张图片
-                if (infoImages.length < 9) {
-                  infoImages.push(imgData.id);
-                }
-                wx.setStorageSync(imageSavedKey, infoImages);
-
-                try {
-                  imageList = wx.getStorageSync(imagePickedKey);
-                }catch(e){}
-                if (imageList.length < 9) {
-                  imageList.push(filePath);
-                }
-                wx.setStorageSync(imagePickedKey, imageList);
-                self.setData({
-                  imageList: imageList
-                });
-
-                if (imageList.length >= 9) {
-                  self.setData({
-                    showAddImgBtn: false
-                  });
+                if (imageIdList.length < 9) {
+                  imageIdList.push(imgData.id);
+                  imagePathList.push(filePath);
+                  self.setImages();
                 }
               }
             })
@@ -207,38 +205,21 @@ Page({
       var self = this;
       var key = e.currentTarget.dataset.key;
       var deleteItem = function(){
-        try {
-          var newImages = [];
-          var newImageList = [];
-          var images = wx.getStorageSync(imageSavedKey);
-          var imageList = wx.getStorageSync(imagePickedKey);
-          for (var i = 0; i < imageList.length; i++) {
-            if (i == key) {
-              continue;
-            } else {
-              newImages.push(images[i]);
-              newImageList.push(imageList[i]);
-            }
-          }
+        var newImageIdList = [];
+        var newImagePathList = [];
 
-          wx.setStorageSync(imageSavedKey, images);
-          wx.setStorageSync('infoImageList', newImageList);
-          self.setData({
-            imageList: newImageList
-          });
-
-          if (newImageList.length >= 9) {
-            self.setData({
-              showAddImgBtn: false
-            });
-          }else {
-            self.setData({
-              showAddImgBtn: true
-            });
+        for (var i = 0; i < imagePathList.length; i++) {
+          if (i == key) {
+            continue;
+          } else {
+            newImageIdList.push(imageIdList[i]);
+            newImagePathList.push(imagePathList[i]);
           }
-        } catch (e) {
-          //什么也不做
         }
+
+        imageIdList = newImageIdList;
+        imagePathList = newImagePathList;
+        self.setImages();
       }
       
       wx.showActionSheet({
@@ -248,6 +229,6 @@ Page({
             deleteItem();
           }
         }
-      })
+      });
     }
 })

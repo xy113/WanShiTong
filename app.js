@@ -1,7 +1,8 @@
 //app.js
+var self = null;
 App({
   onLaunch: function () {
-    var $this = this;
+    self = this;
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -12,16 +13,16 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         wx.request({
-          url: $this.Config.Api+"c=minapp&a=login&code="+res.code,
+          url: self.getApi()+"c=minapp&a=login&code="+res.code,
           success:function(response){
-            console.log(response);
+            //console.log(response);
           }
         })
         wx.getUserInfo({
           lang: 'zh_CN',
           withCredentials:true,
           success: function (res) {
-            console.log(res);
+            //console.log(res);
           }
         });
       }
@@ -36,7 +37,6 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-              console.log(JSON.stringify(res.userInfo));
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
@@ -52,7 +52,11 @@ App({
     userInfo: null
   },
   Config:{
-    Api:"https://wst.songdewei.com/index.php?m=api&"
+    
+  },
+  //获取接口API
+  getApi:function(){
+    return "https://wst.songdewei.com/index.php?m=api&";
   },
   checkUserSession:function(sucess, fail){
     

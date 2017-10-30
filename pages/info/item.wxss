@@ -1,1 +1,80 @@
 /* pages/info/item.wxss */
+.detail{
+  background-color: #fff;
+}
+.detail .top{
+  padding: 10px; 
+  border-bottom: 1px #e5e5e5 solid;
+}
+.detail .top .avatar{
+  width: 40px; 
+  height: 40px;
+  border-radius: 50%;
+  float: left;
+  margin-right: 10px;
+}
+
+.detail .top .username{
+  font-size: 16px;
+  color: #0097D0;
+  height: 40px;
+  line-height: 40px;
+}
+
+.detail .top .pubtime{
+  float: right;
+  font-size: 12px;
+  color: #999;
+  margin-top: 10px;
+}
+
+.detail .top .location{
+  font-size: 12px;
+  color: #999;
+  display: block;
+  margin-top: 15px;
+}
+
+.detail .top .location .distance{
+  float: right;
+}
+
+.detail .top .location .iconfont{
+  font-size: 14px; margin-right: 3px;
+}
+
+.detail .content{
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  text-align: justify;
+  padding: 10px;
+}
+
+.detail .images{
+  display: block;
+  padding: 0 10px;
+}
+
+.detail .images .img-item{
+  max-width: 100%;
+  min-width: 100%;
+  display: block;
+}
+
+.detail .bottom{
+  display: block;
+  font-size: 14px;
+  color: #999;
+  padding: 10px;
+}
+.detail .bottom .right{
+  float: right;
+}
+.detail .bottom .commentnum{
+  margin-right: 5px;
+}
+
+.detail .bottom .share{
+  margin-right: 5px;
+}

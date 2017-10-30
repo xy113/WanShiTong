@@ -6,7 +6,7 @@
           <textarea name="content" class="textarea" placeholder="请输入要发布的内容" />
         </view>
         <view class="image-list">
-            <view class="item" wx:for="{{imageList}}">
+            <view class="item" wx:for="{{imageList}}" wx:key="">
                 <view class="hd">
                     <view class="c" data-key="{{index}}" bindlongpress="deleteImage">
                       <image src="{{item}}" class="img"></image>

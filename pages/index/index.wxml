@@ -8,15 +8,80 @@
           </view>
         </block>
     </view>
-    
+    <!--划片  -->
     <view class="swiper-wrap">
         <swiper class="swiper">
-          <block wx:for="{{sliders}}">
+          <block wx:for="{{sliders}}" wx:key="">
           <swiper-item class="swiper-item">
             <image src="{{item.image}}" class="swiper-image" />
           </swiper-item>
           </block>
         </swiper>
+    </view>
+
+    <!--tabs  -->
+    <view class="tabs">
+      <view class="tab{{tabindex==0?' on':''}}" data-index="0" bindtap="tab">最新发布</view>
+      <view class="tab{{tabindex==1?' on':''}}" data-index="1" bindtap="tab">附近商家</view>
+    </view>
+    <!-- listView -->
+    <view class="listview">
+      <!-- 信息列表 -->
+      <view class="info-list{{tabindex==0?'':' hidden'}}">
+        <block wx:for="{{infoList}}" wx:key="id" wx:for-item="info">
+          <view class="info-item">
+              <view class="top">
+                <button class="contact">联系Ta</button>
+                <image src="{{info.avatar}}" class="avatar"></image>
+                <text class="username">{{info.username}}</text>
+              </view>
+              <view class="info">
+                <view class="content" bindtap="viewInfo" data-id="{{info.id}}">{{info.content}}</view>
+                <view class="images">
+                  <block wx:for="{{info.images}}" wx:key="img_id" wx:for-item="img">
+                    <view class="img-item">
+                      <view class="hd"><image src="{{img.thumb}}" class="img"></image></view>
+                    </view>
+                  </block>
+                </view>
+                <!--位置信息-->
+                <view class="location">
+                  <text class="iconfont icon-location"></text>
+                  <text class="addr">{{info.address}}</text>
+                </view>
+                <!-- 发布时间 -->
+                <view class="time">
+                  <text>{{info.format_time}}</text>
+                  <view class="comment">
+                    <text class="iconfont icon-comment_light"></text>
+                    <text class="commentnum">{{info.commentnum}}</text>
+                    <text class="iconfont icon-appreciate_light"></text>
+                    <text>{{info.ding}}</text>
+                  </view>
+                </view>
+              </view>
+          </view>
+        </block>
+      </view>
+      <!-- 门店列表 -->
+      <view class="shop-list{{tabindex==1?'':' hidden'}}">
+        <block wx:for="{{shopList}}" wx:for-item="shop" wx:key="">
+          <view class="shop-item" bindtap="viewShop" data-id="{{shop.shop_id}}">
+            <image src="{{shop.shop_image}}" class="image" mode="aspectFill" lazy-load="true"></image>
+            <view class="info">
+              <view class="shop-name">{{shop.shop_name}}</view>
+              <view class="attr">
+                <text class="comment">5分 | 5条评论</text>
+              </view>
+              <view class="location">
+                <text class="distance">{{shop.distance}}</text>
+                <text class="iconfont icon-location"></text>
+                <text class="addr">{{shop.address}}</text>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
     </view>
 </view>
 

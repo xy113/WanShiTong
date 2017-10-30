@@ -1,4 +1,7 @@
 /**app.wxss**/
+@import "/lib/style/iconfont.wxss";
+@import "/wxParse/wxParse.wxss";
+
 view::after{
   content: " ";
   display: block;
@@ -11,7 +14,7 @@ view::after{
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
-  background-color: #f2f2f2;
+  background-color: #f0f0f0;
 } 
 
 .catlog-container{
@@ -83,6 +86,227 @@ view::after{
   width: 60px;
   height: 60px;
 }
+
+/*店铺列表*/
+.shop-list{
+  display: block;
+}
+
+.shop-item{
+  display: block;
+  background-color: #fff;
+  padding: 10px;
+  border-bottom: 1px #e7e7e7 solid;
+}
+
+.shop-item .image{
+  width: 100px;
+  height: 80px;
+  float: left;
+  margin-right: 10px;
+}
+
+.shop-item .info{
+  overflow: hidden;
+  height: 80px;
+  position: relative;
+}
+
+.shop-item .info .shop-name{
+  font-size: 15px;
+  color: #333;
+  display: block;
+}
+
+.shop-item .info .attr{
+  display: block;
+}
+
+.shop-item .info .attr .comment{
+  font-size: 12px;
+  color: #888;
+}
+
+.shop-item .info .location{
+  display: block;
+  font-size: 12px;
+  color: #888;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  overflow: hidden;
+}
+
+.shop-item .info .location .iconfont{
+  font-size: 14px;
+}
+
+.shop-item .info .location .distance{
+  float: right;
+}
+
+/*信息列表*/
+.info-list{
+  display: block;
+}
+.info-item{
+  display: block;
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.info-item .top{
+  height: 30px;
+  display: block;
+}
+
+.info-item .top .avatar{
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  float: left;
+  margin-right: 10px;
+}
+
+.info-item .top .username{
+  color: #0097D0;
+  font-size: 15px;
+  line-height: 30px;
+}
+
+.info-item .contact{
+  color: #ff0000;
+  font-size: 12px;
+  float: right;
+  height: 25px;
+  line-height: 25px;
+  background-color: #fff;
+  padding: 0 10px;
+}
+
+.info-item .info{
+  margin-left: 40px;
+  display: block;
+}
+
+.info-item .info .content{
+  font-size: 14px; color: #666666;
+  line-height: 1.3;
+  display: block;
+  padding: 5px 0;
+}
+
+.info-item .info .images{
+  display: flex;
+  display: -webkit-flex;
+  flex-flow: row wrap;
+  width: 100%;
+  clear: both;
+}
+
+.info-item .info .images .img-item{
+  flex: 1;
+  width: 33.33%;
+  min-width: 33.33%;
+  max-width: 33.33%;
+  display: block;
+}
+
+.info-item .info .images .img-item .hd{
+  display: block;
+  padding-top: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.info-item .info .images .img-item .img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.info-item .info .location{
+  display: block;
+  margin: 5px 0;
+  color: #0097D0;
+}
+
+.info-item .info .location .iconfont{
+  font-size: 14px; margin-right: 3px;
+}
+
+.info-item .info .location .addr{
+  font-size: 12px;
+  color: #0097D0;
+  overflow: hidden;
+}
+
+.info-item .info .time{
+  display: block; font-size: 12px;
+  color: #999;
+}
+
+.info-item .info .comment{
+  float: right;
+  font-size: 12px;
+}
+
+.info-item .info .commentnum {
+  margin-right: 5px;
+}
+
+/*tableView*/
+.tableview{
+  display: block;
+  background-color: #fff;
+}
+.tableview .row{
+  display: flex;
+  padding: 12px 10px;
+  font-size: 14px;
+  color: #333;
+  border-bottom: 1px #e7e7e7 solid;
+}
+
+.tableview .cell{
+  flex: 1;
+  display: block;
+}
+
+.tableview .cell-icon{
+  width: 24px;
+  min-width: 24px;
+  max-width: 24px;
+  height: 24px;
+  font-size: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 20%;
+}
+
+.tableview .cell-text{
+  display: inline-block;
+  vertical-align: middle;
+  height: 24px;
+  line-height: 24px;
+}
+
+.tableview .cell-assory{
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAQklEQVQ4je3OMQ0AIBBDUaQg4SThpumfTgJSGVkJkLDw9v60lNuAANpRxHY/jgAJxI9MtrukuvsggPzjRZLq9viJAf+cM7UByutWAAAAAElFTkSuQmCC");
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 16px;
+  min-width: 20px;
+  max-width: 20px;
+  height: 16px;
+  margin-top: 5px;
+}
+
 
 .hidden{
   display: none;

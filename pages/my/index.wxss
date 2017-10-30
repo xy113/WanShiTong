@@ -1,0 +1,30 @@
+/* pages/my/index.wxss */
+.my-header{
+  background-color: #00C858;
+  color: #fff;
+  padding: 15px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.my-header .avatar{
+  display: block;
+  text-align: center;
+}
+
+.my-header .avatar .img{
+  width: 75px;
+  height: 75px;
+  border: 3px #fff solid;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.my-header .username{
+  text-align: center;
+  font-size: 16px;
+  display: block;
+  margin-top: 5px;
+}

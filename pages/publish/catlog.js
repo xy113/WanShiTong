@@ -1,6 +1,8 @@
 // pages/publish/catlog.js
 //获取应用实例
 const app = getApp()
+var self = null;
+
 Page({
 
   /**
@@ -15,9 +17,9 @@ Page({
    */
   onLoad: function (options) {
     //加载分类信息
-    var self = this;
+    self = this;
     wx.request({
-      url: app.Config.Api + "c=infocatlog&a=batchget",
+      url: app.getApi() + "c=infocatlog&a=batchget",
       success: function (response) {
         self.setData({
           catlogList: response.data.data
@@ -80,17 +82,17 @@ Page({
       var self = this;
       var catid = e.currentTarget.dataset.catid;
       wx.request({
-        url: app.Config.Api+"c=infocatlog&a=batchget&fid="+catid,
+        url: app.getApi()+"c=infocatlog&a=batchget&fid="+catid,
         success:function(response){
           var data = response.data.data;
           if(data.length == 0){
             wx.navigateTo({
               url: 'publish?catid='+catid,
-            })
+            });
           }else {
             self.setData({
               catlogList: response.data.data
-            })
+            });
           }
         }
       })

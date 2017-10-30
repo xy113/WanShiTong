@@ -1,1 +1,26 @@
 /* pages/publish/catlog.wxss */
+
+.catlog-list{
+  display: block;
+  overflow: hidden;
+}
+
+.catlog-list .item{
+  padding: 10px; display: block;
+  background-color: #fff;
+  border-bottom: 1px #e7e7e7 solid;
+}
+
+.catlog-list .text{
+  font-size: 15px;
+  line-height: 15px;
+}
+
+.catlog-list .assory{
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAQklEQVQ4je3OMQ0AIBBDUaQg4SThpumfTgJSGVkJkLDw9v60lNuAANpRxHY/jgAJxI9MtrukuvsggPzjRZLq9viJAf+cM7UByutWAAAAAElFTkSuQmCC");
+  background-repeat: no-repeat;
+  width: 16px;
+  height: 16px;
+  float: right;
+  margin-top: 5px;
+}

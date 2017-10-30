@@ -1,39 +1,43 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/catlog/catlog",
     "pages/publish/catlog",
     "pages/publish/publish",
-    "pages/info/item"
+    "pages/info/item",
+    "pages/info/list",
+    "pages/shop/index",
+    "pages/my/index",
+    "pages/shop/detail",
+    "pages/shop/list"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "backgroundColor": "#f2f2f2",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#00C858",
     "navigationBarTitleText": "触角同城便民服务站",
-    "navigationBarTextStyle": "black",
-    "enablePullDownRefresh": true
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": false
   },
   "tabBar": {
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "同城",
-        "selectedColor": "#1296db",
+        "selectedColor": "#00C858",
         "iconPath": "images/icon/home.png",
         "selectedIconPath": "images/icon/home-fill.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/shop/index",
         "text": "门店",
-        "selectedColor": "#1296db",
+        "selectedColor": "#00C858",
         "iconPath": "images/icon/shop.png",
         "selectedIconPath": "images/icon/shop-fill.png"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/my/index",
         "text": "我的",
-        "selectedColor": "#1296db",
+        "selectedColor": "#00C858",
         "iconPath": "images/icon/my.png",
         "selectedIconPath": "images/icon/my-fill.png"
       }

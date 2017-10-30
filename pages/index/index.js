@@ -1,22 +1,54 @@
 //index.js
 //获取应用实例
 const app = getApp()
+var self = null;
+var infoList = [];
+var shopList = [];
+var handlers = {
+  //加载信息
+  loadInfoList: function () {
+    wx.request({
+      url: app.getApi() + "c=info&a=batchget&offset=0&count=10",
+      success: function (res) {
+        console.log(res.data);
+        infoList = res.data.data;
+        self.setData({
+          infoList: infoList
+        });
+      }
+    })
+  },
+  //加载店铺信息
+  loadShopList:function(){
+    wx.request({
+      url: app.getApi()+"c=shop&a=batchget&offset=0&count=10",
+      success:function(res){
+        console.log(res.data);
+        shopList = res.data.data;
+        self.setData({
+          shopList:shopList
+        });
+      }
+    });
+  }
+};
 
 Page({
   data: {
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    tabindex:0
   },
   //事件处理函数
   viewCatlog:function(e){
     var catid = e.currentTarget.dataset.catid;
     wx.navigateTo({
-      url: '../catlog/catlog',
+      url: '../info/list?catid='+catid,
     })
   },
   onLoad: function () {
-    console.log(app.globalData.userInfo);
+    self = this;
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -45,9 +77,8 @@ Page({
       })
     }
     //加载分类信息
-    var self = this;
     wx.request({
-      url: app.Config.Api+"c=infocatlog&a=batchget",
+      url: app.getApi()+"c=infocatlog&a=batchget",
       success:function(response){
         //console.log(JSON.stringify(response.data.data));
         self.setData({
@@ -57,13 +88,15 @@ Page({
     });
     //加载轮播广告
     wx.request({
-      url: app.Config.Api+"c=block&a=get_items&block_id=10",
+      url: app.getApi()+"c=block&a=get_items&block_id=10",
       success:function(response){
         self.setData({
           sliders: response.data.data
         });
       }
-    })
+    });
+    //加载最新信息
+    handlers.loadInfoList();
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -77,5 +110,41 @@ Page({
     wx.navigateTo({
       url: '../publish/catlog',
     })
+  },
+  tab:function(e){
+    var tabindex = e.currentTarget.dataset.index;
+    self.setData({
+      tabindex:tabindex
+    });
+
+    if (tabindex == 0){
+      if (infoList.length == 0){
+        handlers.loadInfoList();
+      }
+    }else {
+      if(shopList.length == 0){
+        handlers.loadShopList();
+      }
+    }
+  },
+
+  /**
+   * 查看店铺详情
+   */
+  viewShop: function (e) {
+    var shop_id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: "/pages/shop/detail?shop_id=" + shop_id,
+    })
+  },
+
+  /**
+   * 查看详情
+   */
+  viewInfo: function (e) {
+    var id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: '/pages/info/item?id=' + id,
+    });
   }
 })

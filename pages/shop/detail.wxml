@@ -1,0 +1,41 @@
+<!--pages/shop/detail.wxml-->
+<view class="container">
+  <view class="shop-detail">
+    <view class="shop-image">
+      <image src="{{shop.shop_image}}" class="image"></image>
+    </view>
+    
+    <!--门店信息  -->
+    <view class="shop-info">
+      <view class="shop-name">{{shop.shop_name}}</view>
+      <view class="row">
+        <text class="iconfont icon-location"></text>
+        <text class="label">地　　址</text>
+        <view class="text"><text>{{shop.address}}</text></view>
+        <view class="assory"></view>
+      </view>
+
+      <view class="row">
+        <text class="iconfont icon-phone"></text>
+        <text class="label">电　　话</text>
+        <text class="text">{{shop.phone}}</text>
+        <view class="assory"></view>
+      </view>
+
+      <view class="row">
+        <text class="iconfont icon-time"></text>
+        <text class="label">营业时间</text>
+        <text class="text">09：00 - 18：00</text>
+        <view class="assory"></view>
+      </view>
+    </view>
+    <!--门店简介  -->
+    <view class="shop-content">
+      <view class="title">门店简介</view>
+      <view class="content">
+        <import src="../../wxParse/wxParse.wxml"/>
+        <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
+      </view>
+    </view>
+  </view>
+</view>

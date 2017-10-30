@@ -1,4 +1,7 @@
-// pages/catlog/catlog.js
+// pages/my/index.js
+const app = getApp();
+var self = null;
+
 Page({
 
   /**
@@ -12,7 +15,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    self = this;
+    wx.setNavigationBarTitle({
+      title: '',
+    });
+    wx.getUserInfo({
+      lang: 'zh_CN',
+      success: function (res) {
+        //console.log(res);
+        self.setData({
+          userinfo:res.userInfo
+        })
+      }
+    });
   },
 
   /**

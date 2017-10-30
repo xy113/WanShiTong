@@ -1,10 +1,10 @@
 <!--pages/publish/catlog.wxml-->
 <view class="container">
-    <view class='catlog-container'>
+    <view class='catlog-list'>
         <block wx:for="{{catlogList}}" wx:for-item="item" wx:key="itemid">
-          <view class="catlog-item" data-catid="{{item.catid}}" bindtap='pubWithCatlog'>
-            <image class="catlog-icon" src="{{item.icon}}" mode="aspectFill" lazy-load="true"></image>
-            <text class="catlog-name">{{item.name}}</text>
+          <view class="item" data-catid="{{item.catid}}" bindtap='pubWithCatlog'>
+            <view class="assory"></view>
+            <text class="text">{{item.name}}</text>
           </view>
         </block>
     </view>

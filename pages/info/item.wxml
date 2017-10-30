@@ -1,2 +1,36 @@
 <!--pages/info/item.wxml-->
-<text>pages/info/item.wxml</text>
+<view class="container detail">
+  <!-- 头部 -->
+  <view class="top">
+    <view>
+      <text class="pubtime">{{info.formated_time}}</text>
+      <image src="{{info.avatar}}" class='avatar'></image>
+      <text class="username">{{info.username}}</text>
+    </view>
+    <view class="location">
+      <text class="distance">{{info.distance}}</text>
+      <text class="iconfont icon-location"></text>
+      <text class="address">{{info.address}}</text>
+    </view>
+  </view>
+  <!-- 正文 -->
+  <view class="content">{{info.content}}</view>
+  <view class="images">
+    <block wx:for="{{info.images}}" wx:key="img_id" wx:for-item="img">
+    <image src="{{img.image}}" class="img-item"></image>
+    </block>
+  </view>
+  <!--底部  -->
+  <view class="bottom">
+    <view class="right">
+      <text class="share">分享</text>
+      <text>举报</text>
+    </view>
+    <view class="">
+      <text class="iconfont icon-comment_light"></text>
+      <text class="commentnum">{{info.commentnum}}</text>
+      <text class="iconfont icon-appreciate_light"></text>
+      <text>{{info.ding}}</text>
+    </view>
+  </view>
+</view>
