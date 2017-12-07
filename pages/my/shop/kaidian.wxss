@@ -1,0 +1,86 @@
+/* pages/my/shop/kaidian.wxss */
+.form{
+  display: block;
+  padding: 10px;
+}
+
+.form .row{
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 10px 0;
+  border-bottom: 1px #e7e7e7 solid;
+}
+
+.form .row .label{
+  display: block;
+  height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+  margin-right: 10px;
+  min-width: 80px;
+  max-width: 80px;
+  flex: 1;
+}
+
+.form .row .input{
+  min-height: 20px;
+  padding: 0;
+}
+
+.form .row .text{
+  font-size: 14px;
+  height: 20px;
+  line-height: 20px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+
+.form .row .tips{
+  font-size: 13px;
+  color: #83838A;
+  height: 20px;
+  line-height: 20px;
+}
+
+.form .noborder{
+  border: 0;
+}
+
+.form .row .addbox{
+  display: block;
+  clear: both;
+}
+
+.form .row .addbox .addbutton{
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAABSklEQVR4nO3bwQ3CMBAFUUpICSmBEtIJLaSEVOZPCXQEB4IUpJywNDbWPGnv6zlEuezlIkmSJLWRZEpyS3JrvcvQSin3JM990nqfISWZD5E/M7feazhJlpPQS+u9hmNoiKEhhoYYGmJoiKEhhoYYGmJoiKEhhoYYGmJoiKEhhoYYGmJoiKEhhoYYGmJoiKEhhoYYGmJoiKEhhoYYGmJoiKEhhoYMHTrvm5GcPND5niSZakKvHTziX2atCb118IB/ma0m9FRKeXTwiK5nb/T7p+MQfOlgzj5jawd7LdWBe5KR/zp6YmiIoSGGhhgaYmiIoSGGhhgaYmiIoSGGhhgaYmiIoSGGhhgaYmiIoSGGhhgaYmiIoSGGhhgaYmiIoSGGhhgaYmiIoSGGhiS5noSeW+81pOOZRynl0XqfYeV9jrftU38zIkmSJP3mBVynYfHHx/kJAAAAAElFTkSuQmCC");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 60px 60px;
+  display: block;
+  width: 80px;
+  height: 80px;
+  border: 1px #DDD solid;
+}
+
+.form .row .textarea{
+  width: 100%;
+  height: 160px;
+  border: 1px #DDD solid;
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 2px;
+}
+
+.form .submit{
+  display: block;
+  margin: 20px 0;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  background-color: #00CA52;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+}

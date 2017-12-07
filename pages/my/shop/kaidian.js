@@ -1,7 +1,11 @@
-// pages/my/index.js
-const app = getApp();
-var self = null;
+// pages/my/shop/kaidian.js
+// 引入SDK核心类
+var QQMapWX = require('../../../lib/qqmap/qqmap-wx-jssdk.js');
 
+// 实例化API核心类
+var qqmap = new QQMapWX({
+  key: '6MKBZ-WG2WD-B3O4R-HYWHH-IHLV6-L7BIO' // 必填
+});
 Page({
 
   /**
@@ -15,18 +19,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    self = this;
     wx.setNavigationBarTitle({
-      title: '',
-    });
-    wx.getUserInfo({
-      lang: 'zh_CN',
-      success: function (res) {
-        //console.log(res);
-        self.setData({
-          userinfo:res.userInfo
-        })
-      }
+      title: '商家入驻',
     });
   },
 
@@ -79,21 +73,27 @@ Page({
   
   },
 
-  didSelectedRow:function(e){
-    var target = e.currentTarget.dataset.target;
-
-    if(app.isLogin()){
-      if (target == 'publish') {
-        wx.navigateTo({
-          url: './mypub/myinfo',
-        })
-      }
-
-      if (target == 'shop') {
-        wx.navigateTo({
-          url: './shop/kaidian',
-        })
-      }
-    }
+  chooseLocation:function(e){
+    wx.chooseLocation({
+      success: function(res) {
+        console.log(res);
+        // 调用接口
+        qqmap.reverseGeocoder({
+          location: {
+            latitude: res.latitude,
+            longitude: res.longitude
+          },
+          success: function (res) {
+            console.log(res);
+          },
+          fail: function (res) {
+            console.log(res);
+          },
+          complete: function (res) {
+            //console.log(res);
+          }
+        });
+      },
+    })
   }
 })

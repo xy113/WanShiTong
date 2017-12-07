@@ -10,7 +10,7 @@ var handlers = {
     wx.request({
       url: app.getApi() + "c=info&a=batchget&offset=0&count=10",
       success: function (res) {
-        console.log(res.data);
+        //console.log(res.data);
         infoList = res.data.data;
         self.setData({
           infoList: infoList
@@ -146,5 +146,10 @@ Page({
     wx.navigateTo({
       url: '/pages/info/item?id=' + id,
     });
+  },
+  getPhoneNumber: function (e) {
+    console.log(e.detail.errMsg)
+    console.log(e.detail.iv)
+    console.log(e.detail.encryptedData)
   }
 })

@@ -1,64 +1,80 @@
 //app.js
 var self = null;
 App({
-  onLaunch: function () {
-    self = this;
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
+  login: function(){
     // 登录
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        wx.request({
-          url: self.getApi()+"c=minapp&a=login&code="+res.code,
-          success:function(response){
-            //console.log(response);
-          }
-        })
         wx.getUserInfo({
           lang: 'zh_CN',
-          withCredentials:true,
-          success: function (res) {
-            //console.log(res);
+          success: function (info) {
+            //console.log(info);
+            self.globalData.userinfo = info.userInfo;
+            wx.request({
+              url: self.getApi() + "c=minapp&a=onlogin&code=" + res.code,
+              method: "POST",
+              header: {
+                "content-type": "application/x-www-form-urlencoded"
+              },
+              data: info.userInfo,
+              success: function (response) {
+                //console.log(response);
+                var data = response.data.data;
+                if (data.sessionKey) {
+                  wx.setStorageSync('sessionKey', data.sessionKey);
+                }
+                if (data.phoneNumber) {
+                  wx.setStorageSync('phoneNumber', data.phoneNumber);
+                }
+                if (!data.uid) {
+                  wx.setStorageSync('uid', data.uid);
+                  wx.setStorageSync('username', data.username);
+                }
+              }
+            });
           }
         });
       }
     });
-    
+  },
+  onLaunch: function () {
+    self = this;
     // 获取用户信息
     wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
-            }
-          })
+          self.login();
         }
       }
+    });
+    //获取位置信息
+    wx.getLocation({
+      success: function(res) {
+        var location = res.latitude+','+res.longitude;
+        wx.setStorageSync('location', location);
+      },
     })
   },
   globalData: {
     userInfo: null
   },
-  Config:{
-    
-  },
   //获取接口API
   getApi:function(){
-    return "https://wst.songdewei.com/index.php?m=api&";
+    var sessionKey = wx.getStorageSync('sessionKey');
+    var location = wx.getStorageSync('location');
+    return "https://wst.songdewei.com/index.php?sessionKey="+sessionKey+"&location="+location+"&m=api&";
   },
   checkUserSession:function(sucess, fail){
     
+  },
+  isLogin:function(){
+    var sessionKey = wx.getStorageSync('sessionKey');
+    if (sessionKey) {
+      return true;
+    }else {
+      self.login();
+      return false;
+    }
   }
 })

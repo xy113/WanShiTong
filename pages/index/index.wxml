@@ -1,4 +1,5 @@
 <!--index.wxml-->
+<button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号码</button>
 <view class="container">
     <view class='catlog-container'>
         <block wx:for="{{catlogList}}" wx:for-item="item" wx:key="itemid">

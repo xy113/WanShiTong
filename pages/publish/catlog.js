@@ -86,9 +86,13 @@ Page({
         success:function(response){
           var data = response.data.data;
           if(data.length == 0){
-            wx.navigateTo({
-              url: 'publish?catid='+catid,
-            });
+            if (!app.isLogin()) {
+              app.login();
+            }else {
+              wx.navigateTo({
+                url: 'publish?catid=' + catid,
+              });
+            }
           }else {
             self.setData({
               catlogList: response.data.data

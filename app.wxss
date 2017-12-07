@@ -278,6 +278,18 @@ view::after{
   display: block;
 }
 
+.tableview .row .imageview{
+  width: 24px;
+  min-width: 24px;
+  max-width: 24px;
+  height: 24px;
+  font-size: 20px;
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 20%;
+  margin-right: 3px;
+}
+
 .tableview .cell-icon{
   width: 24px;
   min-width: 24px;

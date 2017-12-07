@@ -8,7 +8,9 @@
     "pages/shop/index",
     "pages/my/index",
     "pages/shop/detail",
-    "pages/shop/list"
+    "pages/shop/list",
+    "pages/my/mypub/myinfo",
+    "pages/my/shop/kaidian"
   ],
   "window": {
     "backgroundTextStyle": "light",
