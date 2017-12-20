@@ -10,7 +10,14 @@
     "pages/shop/detail",
     "pages/shop/list",
     "pages/my/mypub/myinfo",
-    "pages/my/shop/kaidian"
+    "pages/my/shop/kaidian",
+    "pages/my/address/address",
+    "pages/my/setting/setting",
+    "pages/my/kefu/kefu",
+    "pages/my/catlog/catlog",
+    "pages/my/shop/myshop",
+    "pages/my/shop/edit_name",
+    "pages/my/shop/edit_phone"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,43 @@
+<!--pages/my/shop/myshop.wxml-->
+<view class='shopview' wx:if="{{shopInfo}}">
+  <view class='table-header-view'>基本信息</view>
+  <view class='tableview'>
+    <view class='row'>
+      <view class='cell cell-text cell-logo'>门店LOGO</view>
+      <view class='cell cell-detail cell-logo' bindtap='chooseLogo'>
+        <image class='logo' src='{{shop_logo}}' wx:if="{{shop_logo}}"></image>
+        <image class='logo' src='{{shopInfo.shop_logo}}' wx:else></image>
+      </view>
+      <view class='cell cell-assory cell-logo'></view>
+    </view>
+
+    <view class='row'>
+      <view class='cell cell-text'>门店名称</view>
+      <view class='cell cell-detail' bindtap='editName'>{{shopInfo.shop_name}}</view>
+      <view class='cell cell-assory'></view>
+    </view>
+
+    <view class='row'>
+      <view class='cell cell-text'>主营类目</view>
+      <view class='cell cell-detail' bindtap='chooseCatlog' wx:if="{{catlog}}">{{catlog}}</view>
+      <view class='cell cell-detail' bindtap='chooseCatlog' wx:else>未设置</view>
+      <view class='cell cell-assory'></view>
+    </view>
+
+    <view class='row'>
+      <view class='cell cell-text'>门店地址</view>
+      <view class='cell cell-detail' bindtap='chooseLocation'>{{shopInfo.city}} {{shopInfo.county}}</view>
+      <view class='cell cell-assory'></view>
+    </view>
+
+    <view class='row'>
+      <view class='cell cell-text'>客服电话</view>
+      <view class='cell cell-detail' bindtap='editPhone'>{{shopInfo.phone}}</view>
+      <view class='cell cell-assory'></view>
+    </view>
+  </view>
+</view>
+<view class='noshop' wx:else>
+  <text class='text'>暂无门店</text>
+  <button class='button' bindtap='kaidian'>立即入住</button>
+</view>

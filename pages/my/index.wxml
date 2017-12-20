@@ -18,12 +18,6 @@
       <view class="cell cell-assory"></view>
     </view>
 
-    <view class="row" bindtap='didSelectedRow' data-target='kefu'>
-      <image class="cell imageview" src="/images/my/kefu.png" mode="aspectFill"></image>
-      <view class="cell cell-text">联系客服</view>
-      <view class="cell cell-assory"></view>
-    </view>
-
     <view class="row" bindtap='didSelectedRow' data-target='address'>
       <image class="cell imageview" src="/images/my/address.png" mode="aspectFill"></image>
       <view class="cell cell-text">收货地址</view>
@@ -33,6 +27,12 @@
     <view class="row" bindtap='didSelectedRow' data-target='settings'>
       <image class="cell imageview" src="/images/my/settings.png" mode="aspectFill"></image>
       <view class="cell cell-text">资料设置</view>
+      <view class="cell cell-assory"></view>
+    </view>
+
+    <view class="row" bindtap='didSelectedRow' data-target='kefu'>
+      <image class="cell imageview" src="/images/my/kefu.png" mode="aspectFill"></image>
+      <view class="cell cell-text">联系客服</view>
       <view class="cell cell-assory"></view>
     </view>
   </view>

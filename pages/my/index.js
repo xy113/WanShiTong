@@ -91,7 +91,25 @@ Page({
 
       if (target == 'shop') {
         wx.navigateTo({
-          url: './shop/kaidian',
+          url: './shop/myshop',
+        })
+      }
+
+      if(target == 'address') {
+        wx.navigateTo({
+          url: './address/address',
+        })
+      }
+
+      if(target == 'settings'){
+        wx.navigateTo({
+          url: './setting/setting',
+        })
+      }
+
+      if(target == 'kefu') {
+        wx.navigateTo({
+          url: './kefu/kefu',
         })
       }
     }

@@ -22,6 +22,13 @@
   flex: 1;
 }
 
+.form .row .con{
+  display: block;
+  flex: 1;
+  height: 20px;
+  overflow: hidden;
+}
+
 .form .row .input{
   min-height: 20px;
   padding: 0;
@@ -62,6 +69,12 @@
   width: 80px;
   height: 80px;
   border: 1px #DDD solid;
+}
+
+.form .row .addbox .imageview{
+  display: block;
+  width: 80px;
+  height: 80px;
 }
 
 .form .row .textarea{

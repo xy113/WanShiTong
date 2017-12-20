@@ -1,0 +1,9 @@
+<!--pages/my/catlog/catlog.wxml-->
+<view class='tableview'>
+  <block wx:for="{{catlogList}}" wx:for-item="catlog" wx:key="catid">
+  <view class='row' data-catid="{{catlog.catid}}" data-name='{{catlog.name}}' bindtap='onSelectedItem'>
+    <view class='cell cell-text'>{{catlog.name}}</view>
+    <view class='cell cell-assory'></view>
+  </view>
+  </block>
+</view>
