@@ -1,0 +1,19 @@
+<!--pages/my/setting/setinfo.wxml-->
+<view class='container'>
+  <view class='form-wrap'>
+    <form bindsubmit='onSubmit'>
+      <input hidden='true' name='field' value='{{field}}'></input>
+      <view class='group' wx:if="{{field=='username'}}">
+        <input class='text' name='value' placeholder='请输入昵称' value='{{value}}'></input>
+      </view>
+      <view class='group' wx:if="{{field=='mobile'}}">
+        <input class='text' name='value' type='number' placeholder='请输入手机号' value='{{value}}'></input>
+        <!-- <button class='bind' form-type='button' type='button' open-type="getPhoneNumber" bindgetphonenumber='getPhoneNumber'>获取手机号</button> -->
+      </view>
+      <view class='group' wx:if="{{field=='email'}}">
+        <input class='text' name='value' placeholder='请输入邮箱' value='{{value}}'></input>
+      </view>
+      <button class='submit' form-type='submit'>提交</button>
+    </form>
+  </view>
+</view>

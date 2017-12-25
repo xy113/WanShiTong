@@ -2,6 +2,9 @@
 @import "/lib/style/iconfont.wxss";
 @import "/wxParse/wxParse.wxss";
 
+page{box-sizing: border-box;}
+input,textarea,view,text,image,button{box-sizing: border-box;}
+
 view::after{
   content: " ";
   display: block;
@@ -14,7 +17,6 @@ view::after{
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
-  background-color: #f0f0f0;
 } 
 
 .catlog-container{
@@ -85,6 +87,19 @@ view::after{
 .pub-icon{
   width: 60px;
   height: 60px;
+}
+
+.pub-box .content{
+  display: block;
+  color: #fff;
+  text-align: center;
+  font-size: 12px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  background-color: #ff0000;
+  opacity: 0.9;
 }
 
 /*店铺列表*/
@@ -339,4 +354,176 @@ view::after{
 
 .placeholder{
   color: #828282;
+}
+
+.form{
+  display: block;
+  padding: 15px;
+}
+
+.form .group{
+  display: block;
+  padding: 10px 0;
+  position: relative;
+}
+
+.form .textarea{
+  display: block;
+  border: 1px #DDD solid;
+  border-radius: 2px;
+  font-size: 16px;
+  color: #222;
+  padding: 5px;
+  box-sizing: border-box;
+  clear: both;
+  width: 100%;
+}
+
+.form .text{
+  display: block;
+  height: 45px;
+  padding: 0 5px;
+  border: 1px #DDD solid;
+  border-radius: 2px;
+  font-size: 16px;
+}
+
+.form .button{
+  display: block;
+  background-color: #00CA52;
+  height: 45px;
+  line-height: 45px;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 6px;
+}
+
+/*表单部分*/
+.formview{
+  display: block;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+.formview .row{
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 10px 0;
+  border-bottom: 1px #e7e7e7 solid;
+}
+
+.formview .row .label{
+  display: block;
+  height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+  min-width: 80px;
+  max-width: 80px;
+  flex: 1;
+}
+
+.formview .row .con{
+  display: block;
+  flex: 1;
+  min-height: 20px;
+  overflow: hidden;
+}
+
+.formview .row .text{
+  font-size: 14px;
+  height: 20px;
+  line-height: 20px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: block;
+}
+
+.formview .row .tips{
+  font-size: 14px;
+  color: #83838A;
+  height: 20px;
+  line-height: 20px;
+}
+
+.formview .noborder{
+  border: 0;
+}
+
+.formview .row .addbox{
+  display: block;
+  clear: both;
+}
+
+.formview .row .addbox .addbutton{
+  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAABSklEQVR4nO3bwQ3CMBAFUUpICSmBEtIJLaSEVOZPCXQEB4IUpJywNDbWPGnv6zlEuezlIkmSJLWRZEpyS3JrvcvQSin3JM990nqfISWZD5E/M7feazhJlpPQS+u9hmNoiKEhhoYYGmJoiKEhhoYYGmJoiKEhhoYYGmJoiKEhhoYYGmJoiKEhhoYYGmJoiKEhhoYYGmJoiKEhhoYYGmJoiKEhhoYMHTrvm5GcPND5niSZakKvHTziX2atCb118IB/ma0m9FRKeXTwiK5nb/T7p+MQfOlgzj5jawd7LdWBe5KR/zp6YmiIoSGGhhgaYmiIoSGGhhgaYmiIoSGGhhgaYmiIoSGGhhgaYmiIoSGGhhgaYmiIoSGGhhgaYmiIoSGGhhgaYmiIoSGGhiS5noSeW+81pOOZRynl0XqfYeV9jrftU38zIkmSJP3mBVynYfHHx/kJAAAAAElFTkSuQmCC");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 60px 60px;
+  display: block;
+  width: 80px;
+  height: 80px;
+  border: 1px #DDD solid;
+}
+
+.formview .row .addbox .imageview{
+  display: block;
+  width: 80px;
+  height: 80px;
+}
+
+.formview .row .textarea{
+  width: 100%;
+  border: 1px #DDD solid;
+  font-size: 14px;
+  padding: 5px;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+
+.formview .submit{
+  display: block;
+  margin: 20px 0;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  background-color: #00CA52;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  width: 100%;
+}
+.formview .cell{
+  display: block;
+  padding: 10px 0;
+}
+
+.tabs{
+  display: flex;
+  background-color: #fff;
+  height: 40px;
+  line-height: 40px;
+  margin: 10px 0;
+}
+
+.tabs .tab{
+  flex: 1;
+  width: 50%;
+  min-width: 50%;
+  max-width: 50%;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  line-height: 40px;
+}
+
+.tabs .on{
+  color: #0097D0;
+  border-bottom: 2px #0097D0 solid;
+}
+
+.hidden{
+  display: none;
 }

@@ -17,7 +17,11 @@
     "pages/my/catlog/catlog",
     "pages/my/shop/myshop",
     "pages/my/shop/edit_name",
-    "pages/my/shop/edit_phone"
+    "pages/my/shop/edit_phone",
+    "pages/my/address/add",
+    "pages/common/district",
+    "pages/my/address/edit",
+    "pages/my/setting/setinfo"
   ],
   "window": {
     "backgroundTextStyle": "light",

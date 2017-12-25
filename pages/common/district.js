@@ -1,7 +1,17 @@
-// pages/my/shop/edit_name.js
+// pages/common/district.js
 var app = getApp();
 var self = null;
-var shop_name = null;
+var loadDatasource = function(fid){
+  wx.request({
+    url: app.getApi()+'c=district&a=batchget&fid='+fid,
+    success:function(res){
+      self.setData({
+        districtList:res.data.data
+      })
+    }
+  })
+}
+var selectData = {};
 
 Page({
 
@@ -18,12 +28,9 @@ Page({
   onLoad: function (options) {
     self = this;
     wx.setNavigationBarTitle({
-      title: '修改门店名称',
+      title: '选择区域',
     })
-    shop_name = options.shop_name;
-    self.setData({
-      shop_name:shop_name
-    });
+    loadDatasource(0);
   },
 
   /**
@@ -75,28 +82,36 @@ Page({
   
   },
 
-  //提交表单
-  onSubmit:function(e){
-    shop_name = e.detail.value.shop_name;
-    if (!shop_name) {
-      wx.showToast({
-        title: '请输入门店名称',
-      })
-      return false;
+  onSelectedItem:function(e){
+    var id = e.currentTarget.dataset.id;
+    var name = e.currentTarget.dataset.name;
+    var level = e.currentTarget.dataset.level;
+
+    if (level == 1){
+      selectData.province = {
+        id:id,
+        name:name
+      }
+      loadDatasource(id);
     }
 
-    wx.request({
-      url: app.getApi()+"c=shop&a=update",
-      data:{"shop[shop_name]":shop_name},
-      method:'POST',
-      header: {
-        "content-type": "application/x-www-form-urlencoded"
-      },
-      success:function(res){
-        wx.navigateBack({
-          
-        });
+    if (level == 2){
+      selectData.city = {
+        id:id,
+        name:name
       }
-    })
+      loadDatasource(id);
+    }
+
+    if(level == 3){
+      selectData.county = {
+        id:id,
+        name:name
+      }
+      app.globalData.district = selectData;
+      wx.navigateBack({
+        
+      })
+    }
   }
 })

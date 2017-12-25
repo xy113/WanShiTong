@@ -31,3 +31,7 @@
   padding: 5px;
   font-weight: 400;
 }
+
+.pub-box .content{
+  background-color: #00CA52;
+}

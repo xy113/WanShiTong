@@ -1,4 +1,7 @@
 /* pages/my/index.wxss */
+page{
+  background-color: #f0f0f0;
+}
 .my-header{
   background-color: #00C858;
   color: #fff;

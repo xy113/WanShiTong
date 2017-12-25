@@ -8,11 +8,11 @@ var isLoading = false;
 var handlers = {
   loadShopList:function(){
     var offset = (currentPage - 1) * 20;
-    wx.showLoading({
-      title: '',
-    });
+    // wx.showLoading({
+    //   title: '',
+    // });
     wx.request({
-      url: app.getApi()+"c=shop&a=batchget&offset="+offset+"&count=10",
+      url: app.getApi()+"c=shop&a=batchget&offset="+offset+"&count=10&sort="+self.data.sort,
       success:function(res){
         setTimeout(function(){
           wx.hideLoading();
@@ -74,7 +74,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    sort:'time'
   },
 
   /**
@@ -84,6 +84,15 @@ Page({
     self = this;
     handlers.loadCatlogList();
     handlers.loadShopList();
+    //加载轮播广告
+    wx.request({
+      url: app.getApi() + "c=block&a=get_items&block_id=10",
+      success: function (response) {
+        self.setData({
+          sliders: response.data.data
+        });
+      }
+    });
   },
 
   /**
@@ -157,5 +166,19 @@ Page({
     wx.navigateTo({
       url: 'list?catid='+catid,
     })
+  },
+
+  checkIn:function(){
+    wx.navigateTo({
+      url: '../my/shop/myshop',
+    })
+  },
+
+  reSort:function(e){
+    var sort = e.currentTarget.dataset.sort;
+    self.setData({
+      sort:sort
+    });
+    handlers.loadShopList();
   }
 })

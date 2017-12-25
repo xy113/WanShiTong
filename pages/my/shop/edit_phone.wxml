@@ -1,2 +1,11 @@
 <!--pages/my/shop/edit_phone.wxml-->
-<text>pages/my/shop/edit_phone.wxml</text>
+<view class='container'>
+  <form class='form' bindsubmit='onSubmit'>
+    <view class='group'>
+      <input name='phone' class='text' type='number' placeholder='请输入手机号' value='{{phone}}'></input>
+    </view>
+    <view class='group'>
+      <button class='button' form-type='submit'>提交</button>
+    </view>
+  </form>
+</view>

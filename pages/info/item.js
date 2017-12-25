@@ -4,6 +4,7 @@ var infoId = 0;
 var self = null;
 var isRefreshing = false;
 var isLoading = false;
+var bigImages = [];
 //页面请求集合
 var _info = {};
 var handlers = {
@@ -103,4 +104,24 @@ Page({
   onShareAppMessage: function () {
   
   },
+
+  showShare:function(){
+    wx.showShareMenu({
+      
+    })
+  },
+
+  showImages:function(e){
+    if (bigImages.length == 0) {
+      for (var i=0; i<_info.images.length; i++){
+        bigImages.push(_info.images[i].image);
+      }
+    }
+
+    var image = e.currentTarget.dataset.image;
+    wx.previewImage({
+      urls: bigImages,
+      current:image
+    })
+  }
 })

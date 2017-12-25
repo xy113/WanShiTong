@@ -1,2 +1,11 @@
 <!--pages/my/shop/edit_name.wxml-->
-<text>pages/my/shop/edit_name.wxml</text>
+<view class='container'>
+  <form class='form' bindsubmit='onSubmit'>
+    <view class='group textarea-wrap'>
+      <textarea name='shop_name' class='textarea' placeholder='请输入门店名称' value='{{shop_name}}'></textarea>
+    </view>
+    <view class='group'>
+      <button class='button' form-type='submit'>提交</button>
+    </view>
+  </form>
+</view>

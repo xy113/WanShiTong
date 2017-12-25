@@ -9,6 +9,23 @@
           </view>
         </block>
   </view>
+  <!--划片  -->
+    <view class="swiper-wrap">
+        <swiper class="swiper">
+          <block wx:for="{{sliders}}" wx:key="">
+          <swiper-item class="swiper-item">
+            <image src="{{item.image}}" class="swiper-image" />
+          </swiper-item>
+          </block>
+        </swiper>
+    </view>
+
+    <!--tabs  -->
+    <view class="tabs">
+      <view class="tab{{sort=='time'?' on':''}}" data-sort="time" bindtap="reSort">最新入住</view>
+      <view class="tab{{sort=='distance'?' on':''}}" data-sort="distance" bindtap="reSort">距离最近</view>
+    </view>
+    <!-- listView -->
   <view class="shop-list">
     <block wx:for="{{shopList}}" wx:for-item="shop" wx:key="">
       <view class="shop-item" bindtap="viewShop" data-id="{{shop.shop_id}}">
@@ -27,4 +44,8 @@
       </view>
     </block>
   </view>
+</view>
+
+<view class="pub-box" bindtap="checkIn">
+  <view class='content'>入住</view>
 </view>

@@ -3,7 +3,7 @@
   <block wx:for="{{infoList}}" wx:key="id" wx:for-item="info">
     <view class="info-item">
         <view class="top">
-          <button class="contact">联系Ta</button>
+          <button class="contact" data-phone='{{info.phone}}' bindtap='callThePhone'>联系Ta</button>
           <image src="{{info.avatar}}" class="avatar"></image>
           <text class="username">{{info.username}}</text>
         </view>

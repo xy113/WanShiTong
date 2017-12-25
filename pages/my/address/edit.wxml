@@ -1,0 +1,28 @@
+<!--pages/my/address/edit.wxml-->
+<view class='container' wx:if='{{address}}'>
+  <view class='formview'>
+    <form bindsubmit='onSubmit'>
+      <view class='row'>
+        <view class='label'>姓名</view>
+        <view class='con'><input name='consignee' class='text' value='{{address.consignee}}' placeholder='收货人姓名'></input></view>
+      </view>
+      <view class='row'>
+        <view class='label'>联系电话</view>
+        <view class='con'><input name='phone' class='text' value='{{address.phone}}' placeholder='请输入联系电话'></input></view>
+      </view>
+      <view class='row'>
+        <view class='label'>所在区域</view>
+        <view class='con'>
+          <view class='text' bindtap='chooseDistrict' wx:if='{{region}}'>{{region}}</view>
+          <view class='tips' bindtap='chooseDistrict' wx:else>选择所在区域</view>
+        </view>
+      </view>
+      <view class='row'>
+        <view class='label'>街道地址</view>
+        <view class='con'><textarea name='street' class='textarea' value='{{address.street}}' placeholder='请输入街道地址'></textarea></view>
+      </view>
+      <button class='submit' form-type='submit'>提交</button>
+      <view class='delele-button' bindtap='deleteAddress'>删除</view>
+    </form>
+  </view>
+</view>

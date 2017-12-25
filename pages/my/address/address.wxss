@@ -1,1 +1,40 @@
 /* pages/my/address/address.wxss */
+.address-list{
+  display: block;
+  padding: 10px;
+}
+
+.address-list .item{
+  padding: 10px 0;
+  border-bottom: 1px #DDD solid;
+}
+
+.address-list .item .consignee{
+  font-size: 16px;
+  font-weight: 600;
+  margin-right: 20px;
+}
+
+.address-list .item .phone{
+  font-size: 14px;
+}
+
+.address-list .item .address{
+  display: block;
+  font-size: 14px;
+  margin-top: 7px;
+  color: #777;
+}
+
+.add-address-button{
+  background-color: #00CA52;
+  color: #fff;
+  font-size: 16px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 45px;
+  border-radius: 0;
+}

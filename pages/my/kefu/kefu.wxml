@@ -1,2 +1,11 @@
 <!--pages/my/kefu/kefu.wxml-->
-<text>pages/my/kefu/kefu.wxml</text>
+<view class='container'>
+  <view class='kefu'>
+      <view>
+        客服电话：13985384321
+      </view>
+      <view>
+        微信：liuji7207731
+      </view>
+  </view>
+</view>

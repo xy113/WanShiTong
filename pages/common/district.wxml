@@ -1,0 +1,11 @@
+<!--pages/common/district.wxml-->
+<view class='container'>
+  <view class='tableview'>
+    <block wx:for="{{districtList}}" wx:for-item="item" wx:key="id">
+      <view class='row' data-id='{{item.id}}' data-name='{{item.name}}' data-level='{{item.level}}' bindtap='onSelectedItem'>
+        <view class='cell cell-text'>{{item.name}}</view>
+        <view class='cell cell-assory'></view>
+      </view>
+    </block>
+  </view>
+</view>

@@ -13,7 +13,8 @@ var handlers = {
         //console.log(res.data);
         infoList = res.data.data;
         self.setData({
-          infoList: infoList
+          infoList: infoList,
+          tabindex: 0
         });
       }
     })
@@ -26,7 +27,8 @@ var handlers = {
         console.log(res.data);
         shopList = res.data.data;
         self.setData({
-          shopList:shopList
+          shopList:shopList,
+          tabindex:1
         });
       }
     });
@@ -112,18 +114,22 @@ Page({
     })
   },
   tab:function(e){
-    var tabindex = e.currentTarget.dataset.index;
-    self.setData({
-      tabindex:tabindex
-    });
-
+    var tabindex = parseInt(e.currentTarget.dataset.index);
     if (tabindex == 0){
       if (infoList.length == 0){
         handlers.loadInfoList();
+      }else {
+        self.setData({
+          tabindex:0
+        })
       }
     }else {
       if(shopList.length == 0){
         handlers.loadShopList();
+      } else {
+        self.setData({
+          tabindex: 1
+        })
       }
     }
   },
@@ -151,5 +157,11 @@ Page({
     console.log(e.detail.errMsg)
     console.log(e.detail.iv)
     console.log(e.detail.encryptedData)
+  },
+  callThePhone:function(e){
+    var phone = e.currentTarget.dataset.phone;
+    wx.makePhoneCall({
+      phoneNumber: phone,
+    })
   }
 })

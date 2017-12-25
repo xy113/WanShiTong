@@ -124,5 +124,12 @@ Page({
     wx.navigateTo({
       url: '/pages/info/item?id='+id,
     });
+  },
+
+  callThePhone: function (e) {
+    var phone = e.currentTarget.dataset.phone;
+    wx.makePhoneCall({
+      phoneNumber: phone,
+    })
   }
 })

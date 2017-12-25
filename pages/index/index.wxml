@@ -1,5 +1,4 @@
 <!--index.wxml-->
-<button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取手机号码</button>
 <view class="container">
     <view class='catlog-container'>
         <block wx:for="{{catlogList}}" wx:for-item="item" wx:key="itemid">
@@ -28,11 +27,11 @@
     <!-- listView -->
     <view class="listview">
       <!-- 信息列表 -->
-      <view class="info-list{{tabindex==0?'':' hidden'}}">
+      <view class="info-list" wx:if="{{tabindex==0}}">
         <block wx:for="{{infoList}}" wx:key="id" wx:for-item="info">
           <view class="info-item">
               <view class="top">
-                <button class="contact">联系Ta</button>
+                <button class="contact" data-phone='{{info.phone}}' bindtap='callThePhone'>联系Ta</button>
                 <image src="{{info.avatar}}" class="avatar"></image>
                 <text class="username">{{info.username}}</text>
               </view>
@@ -65,7 +64,7 @@
         </block>
       </view>
       <!-- 门店列表 -->
-      <view class="shop-list{{tabindex==1?'':' hidden'}}">
+      <view class="shop-list" wx:if="{{tabindex==1}}">
         <block wx:for="{{shopList}}" wx:for-item="shop" wx:key="">
           <view class="shop-item" bindtap="viewShop" data-id="{{shop.shop_id}}">
             <image src="{{shop.shop_image}}" class="image" mode="aspectFill" lazy-load="true"></image>
@@ -87,5 +86,5 @@
 </view>
 
 <view class="pub-box" bindtap="showPub">
-  <image src="/images/icon/addition_fill.png" class="pub-icon"></image>
+  <view class='content'>发布</view>
 </view>

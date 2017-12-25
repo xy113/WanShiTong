@@ -1,2 +1,44 @@
 <!--pages/my/setting/setting.wxml-->
-<text>pages/my/setting/setting.wxml</text>
+<view class='container' wx:if='{{userinfo}}'>
+  <view class='table-header-view'>基本信息</view>
+  <view class='tableview'>
+    <view class='row'>
+      <view class='cell cell-text cell-headimg'>头像</view>
+      <view class='cell cell-detail cell-headimg' bindtap='setHeadimg'>
+        <image class='headimg' src='{{userinfo.headimg}}'></image>
+      </view>
+      <view class='cell cell-assory cell-headimg'></view>
+    </view>
+
+    <view class='row' bindtap='setName'>
+      <view class='cell cell-text'>昵称</view>
+      <view class='cell cell-detail'>{{userinfo.username}}</view>
+      <view class='cell cell-assory'></view>
+    </view>
+
+    <view class='row'>
+      <view class='cell cell-text'>手机号</view>
+      <view class='cell cell-detail' bindtap='setMobile'>{{userinfo.mobile}}</view>
+      <view class='cell cell-assory'></view>
+    </view>
+
+    <view class='row' bindtap='setEmail'>
+      <view class='cell cell-text'>邮箱</view>
+      <view class='cell cell-detail'>{{userinfo.email}}</view>
+      <view class='cell cell-assory'></view>
+    </view>
+
+    <view class='row' bindtap='setSex'>
+      <view class='cell cell-text'>性别</view>
+      <view class='cell cell-detail' wx:if='{{userinfo.usersex==1}}'>男</view>
+      <view class='cell cell-detail' wx:else>女</view>
+      <view class='cell cell-assory'></view>
+    </view>
+
+    <view class='row' bindtap='setPlace'>
+      <view class='cell cell-text'>所在地</view>
+      <view class='cell cell-detail'>{{userinfo.province}} {{userinfo.city}} {{userinfo.county}}</view>
+      <view class='cell cell-assory'></view>
+    </view>
+  </view>
+</view>

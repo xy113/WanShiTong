@@ -1,0 +1,56 @@
+/* pages/my/setting/setinfo.wxss */
+page{
+  background-color: #f0f0f0;
+}
+
+.form-wrap{
+  display: block;
+  margin: 15px;
+}
+
+.form-wrap .group{
+  display: block;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.form-wrap .text{
+  background-color: #fff;
+  border-radius: 6px;
+  border: 1px #DDD solid;
+  display: block;
+  width: 100%;
+  padding: 0 5px;
+  text-align: center;
+  font-size: 16px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.form-wrap .submit{
+  display: block;
+  margin: 20px 0;
+  height: 40px;
+  line-height: 40px;
+  font-size: 14px;
+  background-color: #00CA52;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  width: 100%;
+}
+
+.form-wrap .bind{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f2f2f2;
+  font-size: 14px;
+  color: #333;
+  z-index: 10;
+  border-radius: 0;
+  border: none;
+  line-height: 40px;
+  display: block;
+}

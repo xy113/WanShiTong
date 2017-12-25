@@ -1,5 +1,5 @@
 <!--pages/info/item.wxml-->
-<view class="container detail">
+<view class="container detail" wx:if="{{info}}">
   <!-- 头部 -->
   <view class="top">
     <view>
@@ -17,13 +17,13 @@
   <view class="content">{{info.content}}</view>
   <view class="images">
     <block wx:for="{{info.images}}" wx:key="img_id" wx:for-item="img">
-    <image src="{{img.image}}" class="img-item"></image>
+    <image src="{{img.image}}" class="img-item" data-image='{{img.image}}' bindtap='showImages'></image>
     </block>
   </view>
   <!--底部  -->
   <view class="bottom">
     <view class="right">
-      <text class="share">分享</text>
+      <text class="share" bindtap='showShare'>分享</text>
       <text>举报</text>
     </view>
     <view class="">

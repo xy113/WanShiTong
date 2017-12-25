@@ -1,6 +1,15 @@
 // pages/my/shop/myshop.js
 var app = getApp();
 var self = null;
+var shopInfo = {};
+
+// 引入SDK核心类
+var QQMapWX = require('../../../lib/qqmap/qqmap-wx-jssdk.js');
+
+// 实例化API核心类
+var qqmap = new QQMapWX({
+  key: '6MKBZ-WG2WD-B3O4R-HYWHH-IHLV6-L7BIO' // 必填
+});
 
 var loadDatasource = function(){
   wx.request({
@@ -8,11 +17,12 @@ var loadDatasource = function(){
     success:function(res) {
       if (res.data.errcode == 0){
         //console.log(res.data.data);
+        shopInfo = res.data.data;
         self.setData({
-          shopInfo:res.data.data
+          shopInfo:shopInfo
         });
         self.setData({
-          catlog: res.data.data.catlog.name
+          catlog: shopInfo.catlog.name
         })
       }
     }
@@ -36,7 +46,6 @@ Page({
     wx.setNavigationBarTitle({
       title: '我的门店',
     });
-    loadDatasource();
   },
 
   /**
@@ -50,6 +59,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    loadDatasource();
     if (app.globalData.catlog){
       wx.request({
         url: app.getApi()+'c=shop&a=update',
@@ -140,9 +150,10 @@ Page({
     })
   },
 
+  //修改名称
   editName:function(){
     wx.navigateTo({
-      url: 'edit_name',
+      url: 'edit_name?shop_name='+shopInfo.shop_name,
     })
   },
 
@@ -155,14 +166,47 @@ Page({
   chooseLocation:function(){
     wx.chooseLocation({
       success: function(res) {
-
+        // 调用接口
+        qqmap.reverseGeocoder({
+          location: {
+            latitude: res.latitude,
+            longitude: res.longitude
+          },
+          success: function (res) {
+            //console.log(res);
+            var component = res.result.address_component;
+            var data = {
+              "shop[province]":component.province,
+              "shop[city]": component.city,
+              "shop[county]": component.district,
+              "shop[street]": component.street
+            }
+            wx.request({
+              url: app.getApi() + "c=shop&a=update",
+              data: data,
+              method: 'POST',
+              header: {
+                "content-type": "application/x-www-form-urlencoded"
+              },
+              success: function (res) {
+                loadDatasource();
+              }
+            })
+          },
+          fail: function (res) {
+            console.log(res);
+          },
+          complete: function (res) {
+            //console.log(res);
+          }
+        });
       },
     })
   },
 
   editPhone:function(){
     wx.navigateTo({
-      url: 'edit_phone',
+      url: 'edit_phone?phone='+shopInfo.phone,
     })
   }
 })

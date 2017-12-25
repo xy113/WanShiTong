@@ -30,7 +30,7 @@
 
 .detail .top .location{
   font-size: 12px;
-  color: #999;
+  color: #666;
   display: block;
   margin-top: 15px;
 }
@@ -45,7 +45,7 @@
 
 .detail .content{
   font-size: 14px;
-  color: #666;
+  color: #222;
   line-height: 1.5;
   text-align: justify;
   padding: 10px;

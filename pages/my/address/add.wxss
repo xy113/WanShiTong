@@ -1,0 +1,4 @@
+/* pages/my/address/add.wxss */
+.formview .row .textarea{
+  height: 80px;
+}

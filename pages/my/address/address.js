@@ -5,7 +5,10 @@ var loadDatasource = function(){
   wx.request({
     url: app.getApi()+'c=address&a=batchget',
     success: function(res){
-      console.log(res);
+      console.log(res.data);
+      self.setData({
+        addressList:res.data.data
+      })
     }
   })
 }
@@ -23,10 +26,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    self = this;
     wx.setNavigationBarTitle({
       title:'我的地址'
     });
-    loadDatasource();
   },
 
   /**
@@ -40,7 +43,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    loadDatasource();
   },
 
   /**
@@ -76,5 +79,18 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+
+  addAddress:function(){
+    wx.navigateTo({
+      url: 'add',
+    })
+  },
+
+  editAddress:function(e){
+    var address_id = e.currentTarget.dataset.id;
+    wx.navigateTo({
+      url: 'edit?address_id='+address_id,
+    })
   }
 })
