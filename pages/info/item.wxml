@@ -16,8 +16,8 @@
   <!-- 正文 -->
   <view class="content">{{info.content}}</view>
   <view class="images">
-    <block wx:for="{{info.images}}" wx:key="img_id" wx:for-item="img">
-    <image src="{{img.image}}" class="img-item" data-image='{{img.image}}' bindtap='showImages'></image>
+    <block wx:for="{{info.images}}" wx:key="img_id" wx:for-item="img" wx:for-index='idx'>
+    <image src="{{img.image}}" class="img-item" data-image='{{img.image}}' bindtap='showImages' mode='widthFix'></image>
     </block>
   </view>
   <!--底部  -->

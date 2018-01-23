@@ -112,16 +112,17 @@ Page({
   },
 
   showImages:function(e){
-    if (bigImages.length == 0) {
+    //if (bigImages.length == 0) {
+    bigImages = [];
       for (var i=0; i<_info.images.length; i++){
         bigImages.push(_info.images[i].image);
       }
-    }
+    //}
 
     var image = e.currentTarget.dataset.image;
     wx.previewImage({
       urls: bigImages,
       current:image
     })
-  }
+  },
 })
